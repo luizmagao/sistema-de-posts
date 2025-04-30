@@ -34,7 +34,7 @@ class CategoryController extends Controller
     {
         $in = $request->all();
         Category::create($in);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Categoria salva com sucesso.');
     }
 
     /**
