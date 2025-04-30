@@ -43,6 +43,13 @@
 
     </div>
 
+    @if (Session::has('success'))
+        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert">
+            <span class="font-bold">Sucesso!</span> {{ Session::get('success') }}
+        </div>
+    @endif
+
     <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <!-- Cabeçalho do Card -->
         <div class="flex flex-col md:flex-row items-center justify-between mb-4 space-y-4 md:space-y-0">
