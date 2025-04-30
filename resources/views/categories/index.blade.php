@@ -50,6 +50,12 @@
         </div>
     @endif
 
+    @if (Session::has('danger'))
+        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <span class="font-bold">Falhou!</span> {{ Session::get('danger') }}
+        </div>
+    @endif
+
     <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <!-- Cabeçalho do Card -->
         <div class="flex flex-col md:flex-row items-center justify-between mb-4 space-y-4 md:space-y-0">

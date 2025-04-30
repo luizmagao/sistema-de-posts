@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Exception;
 
 class CategoryController extends Controller
 {
@@ -50,10 +51,16 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(int $id)
+    public function edit(Category $category)
     {
-        $category = Category::find($id);
-        return view('categories.edit', compact('category'));
+        try {
+            $category = Category::findOrFail($id);
+            return view('categories.edit', compact('category'));
+        } catch (Exception $e) {
+            return redirect()
+                ->route('categories.index')
+                ->with('danger', 'Sua categoria não existe.');
+        }
     }
 
     /**
