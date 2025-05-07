@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'category_id'];
+
+    protected function casts(): array
+    {
+        return [
+            'category_id' => 'integer',
+        ];
+    }
 
     public function category()
     {
