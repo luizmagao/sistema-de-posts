@@ -12,7 +12,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with([
+            'category',
+            'comments'
+        ])->get();
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -20,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**

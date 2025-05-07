@@ -2,5 +2,9 @@
   {
     "type": "sqlite",
     "path": "/Users/luizlins/Documents/NASSAU/BLOCO-3/BACKEND/sistema-posts/database/aula.sqlite"
+  },
+  {
+    "type": "sqlite",
+    "path": "/Users/luizlins/Documents/Documentos - MacBook Air de Luiz/NASSAU/BLOCO-3/BACKEND/sistema-posts/database/aula.sqlite"
   }
 ]
