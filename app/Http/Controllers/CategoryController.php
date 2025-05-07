@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Exception;
 
 class CategoryController extends Controller
 {
@@ -32,9 +33,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $in = $request->all();
-        Category::create($in);
-        return redirect()->route('categories.index')->with('success', 'Categoria salva com sucesso.');
+        $category = $request->all();
+        Category::create($category);
+        return redirect()
+            ->route('categories.index')
+            ->with('success', 'Categoria salva com sucesso.');
     }
 
     /**
@@ -50,7 +53,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -58,7 +61,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->update();
+        return redirect()
+            ->route('categories.index')
+            ->with('success', 'Categoria editada com sucesso.');
     }
 
     /**
@@ -66,6 +73,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()
+            ->route('categories.index')
+            ->with('success', 'Categoria deletada com sucesso.');
     }
 }

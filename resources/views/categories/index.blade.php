@@ -4,7 +4,6 @@
 @section('conteudo-das-visoes')
     <div class="my-5">
 
-
         <nav class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
@@ -43,6 +42,19 @@
         </nav>
 
     </div>
+
+    @if (Session::has('success'))
+        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert">
+            <span class="font-bold">Sucesso!</span> {{ Session::get('success') }}
+        </div>
+    @endif
+
+    @if (Session::has('danger'))
+        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <span class="font-bold">Falhou!</span> {{ Session::get('danger') }}
+        </div>
+    @endif
 
     <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <!-- Cabeçalho do Card -->
