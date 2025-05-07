@@ -53,14 +53,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        try {
-            $category = Category::findOrFail($id);
-            return view('categories.edit', compact('category'));
-        } catch (Exception $e) {
-            return redirect()
-                ->route('categories.index')
-                ->with('danger', 'Sua categoria não existe.');
-        }
+        return view('categories.edit', compact('category'));
     }
 
     /**
