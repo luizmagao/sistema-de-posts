@@ -23,6 +23,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
+<<<<<<< Updated upstream
                         <<<<<<< HEAD <a href="{{ route('posts.index') }}"
                             class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
                             Post</a>
@@ -30,6 +31,10 @@
                             <a href="{{ route('categories.index') }}"
                                 class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Categorias</a>
                             >>>>>>> p2
+=======
+                        <a href="{{ route('posts.index') }}"
+                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Post</a>
+>>>>>>> Stashed changes
                     </div>
                 </li>
                 <li aria-current="page">
@@ -40,11 +45,15 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Editar
+<<<<<<< Updated upstream
                             <<<<<<< HEAD Post</span>
                                 =======
                                 Categoria
                         </span>
                         >>>>>>> p2
+=======
+                            Post</span>
+>>>>>>> Stashed changes
                     </div>
                 </li>
             </ol>
