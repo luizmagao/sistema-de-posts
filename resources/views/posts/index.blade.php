@@ -90,7 +90,7 @@
                 <li
                     class="flex items-center justify-between w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">
                     <!-- Nome da Post -->
-                    <span>{{ $post->title }}</span>
+                    <span><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></span>
 
                     <!-- Ações: Editar e Excluir -->
                     <div class="flex space-x-2">
