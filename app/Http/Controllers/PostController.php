@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +14,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with([
-            'category'
+            'category',
+            'comments'
         ])->get();
 
         return view('posts.index', compact('posts'));
@@ -24,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::select(['id', 'name'])->get();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -36,7 +39,7 @@ class PostController extends Controller
         Post::create($post);
         return redirect()
             ->route('posts.index')
-            ->with('success', 'Categoria salva com sucesso.');
+            ->with('success', 'Post salvo com sucesso.');
     }
 
     /**

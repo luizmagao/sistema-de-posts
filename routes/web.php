@@ -6,7 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('categories.index', 302);
 });
 
 Route::resource('categories', CategoryController::class);

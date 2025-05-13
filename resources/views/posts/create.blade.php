@@ -23,13 +23,8 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
-                        <<<<<<< HEAD <a href="{{ route('posts.index') }}"
-                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
-                            Post</a>
-                            =======
-                            <a href="{{ route('categories.index') }}"
-                                class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Categorias</a>
-                            >>>>>>> p2
+                        <a href="{{ route('posts.index') }}"
+                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Posts</a>
                     </div>
                 </li>
                 <li aria-current="page">
@@ -39,12 +34,8 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
-                        <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Editar
-                            <<<<<<< HEAD Post</span>
-                                =======
-                                Categoria
-                        </span>
-                        >>>>>>> p2
+                        <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Adicionar
+                            Post</span>
                     </div>
                 </li>
             </ol>
@@ -53,28 +44,38 @@
 
     <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <!-- Título da Página -->
-        <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Adicionar Novo Post</h1>
+        <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Adicionar Nova Post</h1>
 
         <!-- Formulário para Adicionar Post -->
-        <form action="{{ route('posts.update', ['post' => $post]) }}" method="POST">
+        <form action="{{ route('posts.store') }}" method="POST">
             @csrf
-            @method('PUT')
+            @method('POST')
 
             <!-- Campo de Nome da Post -->
             <div class="mb-4">
-                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Título
-                    Post</label>
-                <input type="text" id="title" name="title" placeholder="Digite o título da post..."
-                    class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{ $post->title }}" required>
+                <label for="category_id"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
+                <select id="category_id" name="category_id"
+                    class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-4">
-                <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contexto
+                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Título do
                     Post</label>
-                <textarea id="content" name="content" placeholder="Digite o contexto da post..."
-                    class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ $post->content }}
-                </textarea>
+                <input type="text" id="title" name="title" placeholder="Digite o título do Post..."
+                    class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Conteúdo</label>
+                <textarea id="content" name="content" placeholder="Digite o nome da Post..."
+                    class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required></textarea>
             </div>
 
             <!-- Botões de Ação -->
