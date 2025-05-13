@@ -53,14 +53,26 @@
     </div>
 
     <div class="mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div class="mb-4">
-            <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Comentário</label>
-            <textarea id="comment" name="comment" placeholder="Digite seu comentário..."
-                class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
-        </div>
-        <button type="submit"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
-            Adicionar comentário
-        </button>
+        <form action="{{ route('comments.store') }}" method="POST">
+            @csrf
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <div class="mb-4">
+                <label for="comment"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Comentário</label>
+                <textarea id="comment" name="comment" placeholder="Digite seu comentário..."
+                    class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+            </div>
+            <button type="submit"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+                Adicionar comentário
+            </button>
+        </form>
+
+        <h1 class="text-white my-3">Lista de comentário</h1>
+        <ul class="text-white">
+            @foreach ($post->comments as $comment)
+                <li>{{ $comment->content }}</li>
+            @endforeach
+        </ul>
     </div>
 @endsection

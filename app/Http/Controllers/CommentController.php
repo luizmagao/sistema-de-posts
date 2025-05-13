@@ -28,7 +28,13 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = [
+            'post_id' => $request->post_id,
+            'content' => $request->comment
+        ];
+
+        $result = Comment::create($dados);
+        return redirect()->back();
     }
 
     /**

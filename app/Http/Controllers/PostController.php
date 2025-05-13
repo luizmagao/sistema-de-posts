@@ -48,6 +48,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->load('category');
+        $post->load('comments');
+
         return view('posts.view', compact('post'));
     }
 
