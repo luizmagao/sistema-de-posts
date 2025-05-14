@@ -15,3 +15,4 @@ Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 
 Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::get('logar', [LoginController::class, 'logar'])->name('logar');
