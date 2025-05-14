@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Repositories\PostRepository;
 
 class PostController extends Controller
 {
@@ -33,13 +34,13 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, PostRepository $obj)
     {
-        $post = $request->all();
-        Post::create($post);
+        $result = $obj->add($request);
+
         return redirect()
             ->route('posts.index')
-            ->with('success', 'Post salvo com sucesso.');
+            ->with('success', 'Post '.$result->title.' foi salvo com sucesso.');
     }
 
     /**
