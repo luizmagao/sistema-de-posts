@@ -8,7 +8,6 @@ use Exception;
 
 class PostRepository
 {
-
     public function add(Request $request)
     {
         try {
@@ -20,5 +19,4 @@ class PostRepository
             return $e;
         }
     }
-
 }

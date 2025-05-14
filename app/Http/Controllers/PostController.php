@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Repositories\PostRepository;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\AuthenticationException;
 
 class PostController extends Controller
 {
@@ -14,6 +16,11 @@ class PostController extends Controller
      */
     public function index()
     {
+        if(!Auth::check())
+        {
+            throw new AuthenticationException();
+        }
+
         $posts = Post::with([
             'category',
             'comments'
