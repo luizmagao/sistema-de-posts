@@ -12,9 +12,6 @@ Route::get('/', function () {
 Route::resource('categories', CategoryController::class);
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
-<<<<<<< Updated upstream
-=======
 
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('logar', [LoginController::class, 'logar'])->name('logar');
->>>>>>> Stashed changes
