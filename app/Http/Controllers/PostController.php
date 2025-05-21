@@ -16,11 +16,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        if(!Auth::check())
-        {
-            throw new AuthenticationException();
-        }
-
         $posts = Post::with([
             'category',
             'comments'
