@@ -6,7 +6,7 @@
         <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Login</h1>
 
         <!-- Formulário para Adicionar Categoria -->
-        <form action="{{ route('categories.store') }}" method="POST">
+        <form action="{{ route('login_access') }}" method="POST">
             @csrf
             @method('POST')
 

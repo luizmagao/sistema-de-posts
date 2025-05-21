@@ -13,11 +13,15 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    public function logar(Request $request)
+    public function login_access(Request $request)
     {
-        $result = Auth::attempt(['email' => 'test@example.com', 'password' => '12345678']);
+        $in = $request->only(['email', 'password']);
+        if($result = Auth::attempt($in))
+        {
+            return to_route('posts.index');
+        }
 
-        return $result;
+        return redirect()->back();
 
     }
 }
